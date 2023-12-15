@@ -16,7 +16,7 @@ esac
 
 [ -d $DATA_DIR ] || mkdir $DATA_DIR
 
-if true #pullLatestDocker.sh -i $imageName
+if pullLatestDocker.sh -i $imageName
 then
     docker stop $containerName
     docker rm $containerName
