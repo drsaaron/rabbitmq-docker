@@ -22,10 +22,11 @@ then
     docker rm $containerName
     
     docker run -d --hostname $vhostName --name $containerName -p 8080:15672 -p 5672:5672 -v `pwd`/$DATA_DIR:/var/lib/rabbitmq/mnesia/rabbit@$vhostName --network $network $imageName
+
+    # turn on feature flags.  Not sure why this is needed but avoids warnings messages in the UI
+    sleep 5
+    docker exec -it $containerName rabbitmqctl enable_feature_flag all 
 else
     echo "image already latest, so no update"
 fi
 
-# turn on feature flags.  Not sure why this is needed but avoids warnings messages in the UI
-sleep 5
-docker exec -it $containerName rabbitmqctl enable_feature_flag all 
