@@ -25,7 +25,7 @@ then
 
     # turn on feature flags.  Not sure why this is needed but avoids warnings messages in the UI
     sleep 15
-    docker exec -it $containerName rabbitmqctl enable_feature_flag all 
+    ./enableFeatureFlags.sh -c $containerName
 else
     echo "image already latest, so no update"
 fi
