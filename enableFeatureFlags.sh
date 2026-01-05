@@ -19,3 +19,4 @@ then
 fi
 
 docker exec -it $containerName rabbitmqctl enable_feature_flag all
+docker exec -it $containerName rabbitmq-plugins enable rabbitmq_stomp
