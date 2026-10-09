@@ -26,14 +26,12 @@ case $(uname) in
 	network=blazarnetwork
 esac
 
-[ -d $DATA_DIR ] || mkdir $DATA_DIR
-
 if pullLatestDocker.sh -i $imageName || [ -n "$doForce" ]
 then
     docker stop $containerName
     docker rm $containerName
     
-    docker run -d --hostname $vhostName --name $containerName -p 8080:15672 -p 5672:5672 -p 61613:61613 -v `pwd`/$DATA_DIR:/var/lib/rabbitmq/mnesia/rabbit@$vhostName --network $network $imageName
+    docker run -d  --hostname $vhostName --name $containerName -p 8080:15672 -p 5672:5672 -p 61613:61613 --network $network $imageName
 
     # turn on feature flags.  Not sure why this is needed but avoids warnings messages in the UI
     sleep 15
