@@ -33,7 +33,7 @@ then
     docker stop $containerName
     docker rm $containerName
     
-    docker run -d --user $(id -u):$(id -g) --hostname $vhostName --name $containerName -p 8080:15672 -p 5672:5672 -p 61613:61613 -v `pwd`/$DATA_DIR:/var/lib/rabbitmq/mnesia  --network $network $imageName
+    docker run -d  --hostname $vhostName --name $containerName -p 8080:15672 -p 5672:5672 -p 61613:61613 --network $network $imageName
 
     # turn on feature flags.  Not sure why this is needed but avoids warnings messages in the UI
     sleep 15
