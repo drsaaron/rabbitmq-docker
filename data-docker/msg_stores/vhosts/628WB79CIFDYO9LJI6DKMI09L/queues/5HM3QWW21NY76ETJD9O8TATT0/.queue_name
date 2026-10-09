@@ -1,0 +1,3 @@
+VHOST: /
+QUEUE: scrabble.game-player-round-added.bakout
+INDEX: v2

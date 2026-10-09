@@ -1,0 +1,3 @@
+VHOST: /
+QUEUE: jms-demo-consumer-3
+INDEX: v2
